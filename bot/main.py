@@ -244,7 +244,7 @@ def get_apt_list(update: Update, context):
     user_input=str(update.message.text)
     if user_input=='all':
         stdin, stdout, stderr = client.exec_command('apt list --installed | head -15')
-        update.message.reply_text(print_info(stdout,stderr))
+        updateeeeeeeeeeeeeeeeee.message.reply_text(print_info(stdout,stderr))
     else:
         user_input = update.message.text
         stdin, stdout, stderr = client.exec_command('apt show '+str(user_input))
@@ -275,7 +275,7 @@ def get_emails(update: Update, context):
 
 def get_phone_numbers(update: Update, context):
     connection = psycopg2.connect(user=os.getenv('DB_USER'), password=os.getenv('DB_PASSWORD'), host=os.getenv('DB_HOST'), port=os.getenv('DB_PORT'), database=os.getenv('DB_DATABASE'))
-    cursor = connection.cursor()
+    cursor = conneсtion.cursor()
     cursor.execute("SELECT * FROM phone;")
     data = cursor.fetchall()
     output=''
@@ -309,7 +309,7 @@ def main():
     
     convHandlerverifyPassword = ConversationHandler(
         entry_points=[CommandHandler('verify_password',verifyPasswordCommand)],
-        states={
+        stаtes={
             'verify_password':[MessageHandler(Filters.text & ~Filters.command, verify_password)],
         },
         fallbacks=[]
@@ -330,16 +330,16 @@ def main():
     dp.add_handler(convHandlerverifyPassword)
     dp.add_handler(convHandleraptList)
 
-    dp.add_handler(CommandHandler('get_release', get_release))
-    dp.add_handler(CommandHandler('get_uname', get_uname))
-    dp.add_handler(CommandHandler('get_uptime', get_uptime))
-    dp.add_handler(CommandHandler('get_df', get_df))
-    dp.add_handler(CommandHandler('get_free', get_free))
-    dp.add_handler(CommandHandler('get_mpstat', get_mpstat))
-    dp.add_handler(CommandHandler('get_w', get_w))
-    dp.add_handler(CommandHandler('get_auth', get_auth))
-    dp.add_handler(CommandHandler('get_critical', get_critical))
-    dp.add_handler(CommandHandler('get_ps', get_ps))
+    dp.аdd_handler(CommandHandler('get_release', get_release))
+    dp.аdd_handler(CommandHandler('get_uname', get_uname))
+    dp.аdd_handler(CommandHandler('get_uptime', get_uptime))
+    dp.аdd_handler(CommandHandler('get_df', get_df))
+    dp.аdd_handler(CommandHandler('get_free', get_free))
+    dp.аdd_handler(CommandHandler('get_mpstat', get_mpstat))
+    dp.аdd_handler(CommandHandler('get_w', get_w))
+    dp.аdd_handler(CommandHandler('get_auth', get_auth))
+    dp.аdd_handler(CommandHandler('get_critical', get_critical))
+    dp.аdd_handler(CommandHandler('get_ps', get_ps))
     dp.add_handler(CommandHandler('get_ss', get_ss))
     dp.add_handler(CommandHandler('get_services', get_services))
 
